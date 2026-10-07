@@ -186,20 +186,24 @@ html.js .reveal-r{translate:48px 0}
    4. Comparison  (Who We Serve "Why health study information matters": centred title + two circle photos with text on them)
    ========================================================================== */
 .vs{display:grid;grid-template-columns:minmax(0,1fr) 200px minmax(0,1fr);align-items:center;margin-top:56px}
-.disc{position:relative;width:100%;max-width:480px;aspect-ratio:1/1;border-radius:50%;overflow:hidden;display:grid;place-items:center;text-align:center;color:#fff;isolation:isolate}
+.disc{position:relative;width:100%;max-width:480px;aspect-ratio:1/1;border-radius:50%;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;text-align:center;color:#fff;isolation:isolate}
 .disc>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
 .disc::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 50%,rgba(0,20,70,.62) 0%,rgba(0,20,70,.42) 62%,rgba(0,20,70,.16) 100%)}
 .disc-past{justify-self:end;background:#4E58D1}
 .disc-future{justify-self:start;background:#0b3566}
-.disc .in{padding:0 10%}
+.disc .in{width:100%;padding:0 10%}
 .disc .badge{display:inline-block;font-size:13px;line-height:1;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:8px 15px;border-radius:100px;border:1.5px solid rgba(255,255,255,.75)}
 .disc-future .badge{background:var(--cyan);border-color:var(--cyan);color:var(--primary)}
 .disc h3{margin:16px 0 6px;font-size:clamp(26px,2.4vw,34px);line-height:1.15;font-weight:900}
 .disc .says{font-size:20px;line-height:28px;font-weight:500}
 .disc .says b{font-weight:800}
-.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:20px auto 0;max-width:330px}
-.chips li{font-size:16px;line-height:1;font-weight:600;padding:9px 16px;border-radius:100px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55)}
-.disc-future .chips li{border-color:var(--cyan);background:rgba(146,233,240,.18)}
+/* Signal lists: a plain typographic ledger (hairline, two columns, small marker), deliberately not button-like.
+   Retrospective = flat dash marker; prospective = cyan forward arrow marker. */
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px 16px;max-width:340px;margin:22px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.4);text-align:left}
+.signals li{position:relative;padding-left:18px;font-size:16px;line-height:1.3;font-weight:600}
+.signals li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:2px;margin-top:-1px;background:rgba(255,255,255,.75)}
+.disc-future .signals{border-top-color:var(--cyan)}
+.disc-future .signals li::before{top:7px;margin-top:0;width:7px;height:7px;background:none;border-top:2px solid var(--cyan);border-right:2px solid var(--cyan);transform:rotate(45deg)}
 
 .bridge{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:0 10px}
 .bridge .lbl{font-size:14px;line-height:1.25;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--blue)}
@@ -275,7 +279,7 @@ html.js .reveal-r{translate:48px 0}
 .flip:nth-child(even){--c:#002856;--ca:rgba(0,40,86,.84);--ca2:rgba(30,150,175,.58)}
 
 /* ==========================================================================
-   8. Revenue model  (Home "Health Benefit Options": full-width photo band, white title, icon + title + text items)
+   8. Intelligence exchange  (Home "Health Benefit Options": full-width photo band, white title, icon + title items, closing outcome statement)
    ========================================================================== */
 .photoband{position:relative;padding:120px 0;color:#fff;background:#2b6d88 url("/wp-content/uploads/2026/03/choose_image.jpeg") 50% 50%/cover no-repeat}
 .photoband::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,40,86,.66) 0%,rgba(0,40,86,.48) 42%,rgba(0,40,86,0) 78%)}
@@ -283,12 +287,17 @@ html.js .reveal-r{translate:48px 0}
 .pb-col{max-width:600px}
 .photoband h2{color:#fff;margin-bottom:24px}
 .photoband p{font-size:20px;line-height:28px;font-weight:500;color:#fff}
-.pb-col>p+p{margin-top:14.4px}
-.pb-items{margin-top:56px;display:grid;gap:44px}
-.pb-item{display:grid;grid-template-columns:90px minmax(0,1fr);gap:40px;align-items:start}
-.pb-item>img{width:76px;height:auto;margin-top:6px}
-.pb-item .eyebrow{font-size:18px;line-height:1.2;font-weight:600;letter-spacing:2px;color:var(--cyan);margin-bottom:8px}
-.pb-item h3{font-size:clamp(25px,2.1vw,30px);line-height:1.2;font-weight:900;color:#fff;margin-bottom:10px}
+.pb-sub{font-size:clamp(25px,2.1vw,30px);line-height:1.2;font-weight:900;color:var(--cyan);margin-bottom:14px}
+.pb-items{margin-top:30px;display:grid;gap:14px}
+.pb-item{display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;align-items:center;padding:14px 22px 14px 14px;border-radius:18px;border:1px solid rgba(146,233,240,.35);background:rgba(0,40,86,.45)}
+.pb-item .ico{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:2px solid var(--cyan);background:rgba(146,233,240,.12)}
+.pb-item .ico svg{width:28px;height:28px;fill:none;stroke:var(--cyan);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.pb-item .name{font-size:clamp(20px,1.7vw,24px);line-height:1.25;font-weight:900;color:#fff}
+.pb-outcome{margin-top:52px;padding-top:36px;border-top:1px solid rgba(146,233,240,.4)}
+.pb-outcome .pb-sub{margin-bottom:12px}
+.photoband .pb-statement{font-size:clamp(24px,2.1vw,30px);line-height:1.3;font-weight:900;color:#fff;text-wrap:balance}
+.pb-statement span{display:block}
+.pb-statement span:last-child{color:var(--cyan)}
 
 /* ==========================================================================
    9. Data governance  (Who We Serve "How we serve trailblazers": teal icon rows left, rounded photo right)
@@ -361,8 +370,10 @@ html.js .reveal-r{translate:48px 0}
   .tl>li:not(:last-child)::before{left:26.5px;top:64px}
   .tl .dots li{font-size:17px;line-height:25px}
   .photoband{padding:70px 0}
-  .pb-item{grid-template-columns:minmax(0,1fr);gap:14px}
-  .pb-item>img{width:64px}
+  .pb-item{grid-template-columns:46px minmax(0,1fr);gap:14px;padding:12px 16px 12px 12px}
+  .pb-item .ico{width:46px;height:46px}
+  .pb-item .ico svg{width:24px;height:24px}
+  .pb-outcome{margin-top:40px;padding-top:30px}
   .gov-after{margin-top:48px}
   .cta{padding:64px 0 52px}
   .footer-main{padding:10px 0 44px}
@@ -384,7 +395,6 @@ html.js .reveal-r{translate:48px 0}
   .vs{max-width:420px}
   .disc{aspect-ratio:auto;border-radius:28px;padding:44px 0 46px}
   .disc .in{padding:0 22px}
-  .chips{max-width:none}
 }
 
 /* Flip circles on phones: tap to turn the circle into a readable card */
@@ -458,7 +468,6 @@ html.js .reveal-r{translate:48px 0}
    2. From intent to action
    ========================================================================== */
 .intent{overflow:hidden}
-.intent::before{content:"";position:absolute;left:-220px;top:90px;width:480px;height:480px;border-radius:50%;background:var(--tint)}
 .intent .wrap{position:relative}
 .flow{position:relative;display:grid;gap:64px;margin-top:96px}
 .flow::before{content:"";position:absolute;left:50%;top:62px;bottom:62px;margin-left:-1.5px;border-left:3px dashed rgba(51,183,194,.55)}
@@ -571,7 +580,7 @@ html.js .reveal-r{translate:48px 0}
       <ul class="principle-list">
         <li class="reveal"><span class="pico" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="1.5"/><path d="M24 3v8M24 37v8M3 24h8M37 24h8"/></svg></span>Collect with purpose.</li>
         <li class="reveal" style="--d:.15s"><span class="pico" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="21" cy="21" r="13"/><path d="M31 31l12 12M15 25v-4M21 25v-9M27 25v-6"/></svg></span>Analyze responsibly.</li>
-        <li class="reveal" style="--d:.3s"><span class="pico" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M5 36l12-12 8 8 16-18M32 14h10v10"/></svg></span>Apply insights where they can create meaningful value.</li>
+        <li class="reveal" style="--d:.3s"><span class="pico" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M5 36l12-12 8 8 16-18M32 14h10v10"/></svg></span>Apply insights to create value.</li>
       </ul>
       <p class="principle-after">The result is a governed intelligence framework that helps improve experiences, support better decision-making and create sustainable value across the health care ecosystem.</p>
     </div>
@@ -590,7 +599,7 @@ html.js .reveal-r{translate:48px 0}
             <span class="badge">Retrospective</span>
             <h3>Traditional data</h3>
             <p class="says">Explains <b>what happened</b>.</p>
-            <ul class="chips">
+            <ul class="signals">
               <li>Claims</li><li>Eligibility</li><li>Rx</li><li>Utilization</li><li>Administrative</li>
             </ul>
           </div>
@@ -608,7 +617,7 @@ html.js .reveal-r{translate:48px 0}
             <span class="badge">Prospective</span>
             <h3>PSM intelligence</h3>
             <p class="says">Explains <b>why</b> people act, or don't.</p>
-            <ul class="chips">
+            <ul class="signals">
               <li>Intent</li><li>Confidence</li><li>Expected cost</li><li>Barrier</li><li>Action closure</li><li>Satisfaction</li>
             </ul>
           </div>
@@ -948,39 +957,33 @@ html.js .reveal-r{translate:48px 0}
     </div>
   </section>
 
-  <!-- ============================ 8. THE REVENUE MODEL (Home "Health Benefit Options": photo band, white title, icon + title + text items) ============================ -->
-  <section class="photoband" id="revenue-model" aria-labelledby="revenue-title">
+  <!-- ============================ 8. THE INTELLIGENCE EXCHANGE (Home "Health Benefit Options": photo band, white title, icon + title items) ============================ -->
+  <section class="photoband" id="intelligence-exchange" aria-labelledby="exchange-title">
     <div class="wrap">
       <div class="pb-col">
-        <h2 id="revenue-title">The revenue model</h2>
-        <p>PSM's revenue model is built around creating valuable health intelligence while maintaining strong governance and transparency standards.</p>
-        <p>Our objective is to generate governed intelligence that helps organizations make better decisions.</p>
+        <h2 id="exchange-title">The intelligence exchange</h2>
 
-        <div class="pb-items">
-          <article class="pb-item reveal">
-            <img src="/wp-content/uploads/2026/03/price.png" alt="" width="76" height="85" loading="lazy">
-            <div>
-              <p class="eyebrow">Revenue stream 1</p>
-              <h3>Intelligence subscriptions</h3>
-              <p>Organizations may subscribe to PSM intelligence to better understand population health trends, market shifts, access and affordability challenges, health care behaviors and long-term study insights. These subscriptions are designed to turn governed data into practical intelligence that supports better decisions across the health care ecosystem.</p>
-            </div>
-          </article>
-          <article class="pb-item reveal">
-            <img src="/wp-content/uploads/2026/03/network.png" alt="" width="84" height="81" loading="lazy">
-            <div>
-              <p class="eyebrow">Revenue stream 2</p>
-              <h3>Governed research datasets</h3>
-              <p>Where permitted and appropriately governed, de-identified and aggregated datasets may be used to support health care research, population health studies, access-to-care analysis, affordability initiatives and innovation programs. These datasets help organizations study broader trends while maintaining governance standards designed to protect individual privacy.</p>
-            </div>
-          </article>
-          <article class="pb-item reveal">
-            <img src="/wp-content/uploads/2026/03/pays.png" alt="" width="84" height="83" loading="lazy">
-            <div>
-              <p class="eyebrow">Revenue stream 3</p>
-              <h3>Embedded intelligence</h3>
-              <p>Insights may be embedded into TPA services, population health programs, care navigation solutions, health care engagement initiatives and benefit optimization tools. This allows organizations to apply PSM intelligence directly within the systems and programs they already use to support better decisions and improve the health care experience.</p>
-            </div>
-          </article>
+        <h3 class="pb-sub">Turning healthcare experiences into actionable insights</h3>
+        <p>Participants contribute healthcare experiences through Health Studies and ongoing engagement. PSM transforms those experiences into governed health intelligence that helps organizations better understand access, affordability, healthcare behaviors, and outcomes.</p>
+
+        <ul class="pb-items">
+          <li class="pb-item reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="31" rx="4"/><path d="M7 20h34M16 5v8M32 5v8M17 31l5 5 9-10"/></svg></span>
+            <span class="name">Intelligence subscriptions</span>
+          </li>
+          <li class="pb-item reveal" style="--d:.12s">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 5l15 5.5V22c0 10-6.5 17.5-15 21-8.5-3.5-15-11-15-21V10.5z"/><path d="M17 30v-6M24 30V18M31 30v-9"/></svg></span>
+            <span class="name">Governed research intelligence</span>
+          </li>
+          <li class="pb-item reveal" style="--d:.24s">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="12" y="12" width="24" height="24" rx="4"/><rect x="19" y="19" width="10" height="10" rx="2"/><path d="M18 5v7M30 5v7M18 36v7M30 36v7M5 18h7M5 30h7M36 18h7M36 30h7"/></svg></span>
+            <span class="name">Embedded intelligence solutions</span>
+          </li>
+        </ul>
+
+        <div class="pb-outcome">
+          <h3 class="pb-sub">The outcome</h3>
+          <p class="pb-statement reveal"><span>Participants share experiences.</span> <span>PSM creates intelligence.</span> <span>Organizations create better outcomes.</span></p>
         </div>
       </div>
     </div>
