@@ -1,0 +1,122 @@
+/* ==========================================================================
+   PSM · "How Information Creates Value" — two sections
+   1. .iv-intro  : text + check list left, rounded photo right (About Us layout)
+   2. .iv-uses   : five flipping circles (same mechanic as the How We Work page)
+   Self-contained: every class is prefixed .iv-, tokens live on .iv, so it can be
+   dropped into any page without touching the page's own CSS.
+   ========================================================================== */
+.iv{--iv-primary:#002856;--iv-blue:#2C4697;--iv-teal:#33B7C2;--iv-cyan:#92E9F0;--iv-indigo:#4E58D1;--iv-h2:50px;position:relative;padding:100px 0;color:#000;font-family:"avenir-lt-pro","Avenir Next","Avenir","Nunito Sans","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:20px;line-height:1.5;font-weight:500}
+.iv *,.iv *::before,.iv *::after{box-sizing:border-box}
+:where(.iv) :where(h2,h3,h4,p,ul,figure){margin:0;padding:0}
+:where(.iv) ul{list-style:none}
+:where(.iv) img{display:block;max-width:100%;height:auto}
+.iv-wrap{width:100%;max-width:1230px;margin:0 auto;padding:0 15px}
+.iv-title{font-size:var(--iv-h2);line-height:1.15;font-weight:900;text-transform:none;letter-spacing:normal;color:var(--iv-blue);text-wrap:balance}
+.iv-title.center{text-align:center}
+.iv-lead{max-width:840px;margin:18px auto 0;text-align:center;font-size:20px;line-height:28px;font-weight:500;color:#000}
+
+/* Entrance: gentle fade-up (only hides when JS is running) */
+html.js .iv-reveal{opacity:0;translate:0 28px;transition:opacity .8s ease,translate .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+html.js .iv-reveal.in{opacity:1;translate:none}
+
+/* --------------------------------------------------------------------------
+   1. Intro
+   -------------------------------------------------------------------------- */
+.iv-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:70px;align-items:center}
+.iv-sub{margin:20px 0 22px;font-size:clamp(24px,2.1vw,30px);line-height:1.3;font-weight:900;color:var(--iv-teal)}
+.iv-text p{font-size:20px;line-height:28px;font-weight:500;color:#000}
+.iv-text p+p{margin-top:14.4px}
+.iv-list{margin:18px 0 0;display:grid;gap:12px}
+.iv-list li{position:relative;padding-left:38px;font-size:20px;line-height:28px;font-weight:500;color:#000}
+.iv-list li::before{content:"";position:absolute;left:0;top:1px;width:25px;height:25px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2333B7C2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10.8'/%3E%3Cpath d='M7 12.6l3.4 3.5L17.2 8.6'/%3E%3C/svg%3E") center/contain no-repeat}
+.iv-pattern{margin-top:32px;padding:4px 0 4px 22px;border-left:5px solid var(--iv-teal);font-size:clamp(20px,1.8vw,24px);line-height:1.4;font-weight:800;color:var(--iv-blue);text-wrap:pretty}
+.iv-photo{margin:0;border-radius:24px;overflow:hidden;aspect-ratio:565/640;background:var(--iv-indigo)}
+.iv-photo img{width:100%;height:100%;object-fit:cover}
+
+/* --------------------------------------------------------------------------
+   2. Five flip circles (header on the front, context on the back)
+   Desktop: hover / keyboard focus flips (pure CSS). Touch: tap toggles .is-flipped.
+   Phones: the tapped circle turns into a readable card.
+   -------------------------------------------------------------------------- */
+.iv-flips{--d:320px;--gap:22px;--full:520px;--s:.6154;display:grid;grid-template-columns:repeat(6,calc((var(--d) + var(--gap))/2));grid-auto-rows:calc((var(--d) + var(--gap))*.866);justify-content:center;margin:112px 0 0;padding-bottom:calc(var(--d)*.1)}
+.iv-flip:nth-child(1){grid-column:1/3}
+.iv-flip:nth-child(2){grid-column:3/5}
+.iv-flip:nth-child(3){grid-column:5/7}
+.iv-flip:nth-child(4){grid-column:2/4}
+.iv-flip:nth-child(5){grid-column:4/6}
+
+.iv-flip{position:relative;z-index:1;width:var(--d);height:var(--d);justify-self:center;perspective:1400px;pointer-events:none}
+.iv-flip:hover,.iv-flip:focus-within,.iv-flip.is-flipped{z-index:20}
+.iv-flip-inner{position:absolute;left:50%;top:50%;width:var(--full);height:var(--full);margin:calc(var(--full)/-2) 0 0 calc(var(--full)/-2);border-radius:50%;pointer-events:auto;cursor:pointer;outline:none;transform-style:preserve-3d;transform:translateX(0px) scale(var(--s)) rotateY(0deg);transition:transform .85s cubic-bezier(.25,.8,.25,1)}
+.iv-flip-inner:focus-visible,.iv-flip.is-flipped .iv-flip-inner{transform:translateX(var(--dx,0px)) scale(1) rotateY(180deg)}
+@media (hover:hover) and (min-width:761px){.iv-flip:hover .iv-flip-inner{transform:translateX(var(--dx,0px)) scale(1) rotateY(180deg)}}
+
+.iv-face{position:absolute;inset:0;border-radius:50%;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.iv-front{background:var(--c);pointer-events:none}
+.iv-front img{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.iv-front::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(160deg,var(--ca),var(--ca2))}
+.iv-front .t{position:absolute;inset:0;z-index:3;display:grid;place-items:center;padding:0 80px;text-align:center;font-size:46px;line-height:1.1;font-weight:900;color:#fff;text-wrap:balance}
+.iv-front .hint{position:absolute;left:50%;bottom:48px;z-index:3;width:50px;height:50px;margin-left:-25px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.75)}
+.iv-front .hint svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+.iv-back{transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 80px;background:var(--c);color:#fff;text-align:center}
+.iv-flip-inner:focus-visible .iv-back{box-shadow:0 0 0 6px var(--iv-cyan)}
+.iv-back h4{display:inline-block;margin:0 0 22px;padding-bottom:10px;font-size:28px;line-height:1.15;font-weight:900;color:#fff;border-bottom:3px solid var(--iv-cyan);text-wrap:balance}
+.iv-back p{max-width:360px;font-size:22px;line-height:1.38;font-weight:600;color:#fff;text-wrap:pretty}
+
+/* Two duotone families, as on the rest of the site: indigo, and navy-to-teal */
+.iv-flip:nth-child(odd){--c:#4E58D1;--ca:rgba(62,70,205,.80);--ca2:rgba(104,114,232,.68)}
+.iv-flip:nth-child(even){--c:#002856;--ca:rgba(0,40,86,.84);--ca2:rgba(30,150,175,.58)}
+
+/* Tablet: circles wrap and stay centred */
+@media (max-width:1239px) and (min-width:761px){
+  .iv-flips{--d:230px;--gap:22px;--s:.4423;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap);padding-bottom:0}
+  .iv-flip{flex:none}
+}
+
+@media (max-width:1024px){
+  .iv{--iv-h2:42px;padding:80px 0}
+  .iv-split{grid-template-columns:1fr;gap:48px}
+  .iv-photo{max-width:565px;margin-inline:auto;width:100%;aspect-ratio:4/3}
+}
+
+@media (max-width:767px){
+  .iv{--iv-h2:34px;padding:64px 0;font-size:18px}
+  .iv-wrap{padding:0 20px}
+  .iv-lead,.iv-text p,.iv-list li{font-size:18px;line-height:26px}
+  .iv-list li{padding-left:34px}
+}
+
+/* Phones: tap a circle and it turns into a readable card */
+@media (max-width:760px){
+  .iv-flips{--d:300px;--s:.5769;display:grid;grid-template-columns:1fr;grid-auto-rows:auto;gap:30px;justify-items:center;margin-top:56px;padding-bottom:0}
+  .iv-flip:nth-child(n){grid-column:auto}
+  .iv-flip{pointer-events:auto}
+  .iv-flip-inner:focus-visible{transform:translateX(0px) scale(var(--s)) rotateY(0deg)}
+  .iv-flip.is-flipped{width:100%;max-width:520px;height:auto}
+  .iv-flip.is-flipped .iv-flip-inner{position:relative;left:auto;top:auto;width:100%;height:auto;margin:0;border-radius:28px;transform:none;animation:iv-flipin .6s cubic-bezier(.25,.8,.25,1)}
+  .iv-flip.is-flipped .iv-front{display:none}
+  .iv-flip.is-flipped .iv-back{position:relative;inset:auto;transform:none;border-radius:28px;padding:36px 26px 34px}
+  .iv-flip.is-flipped .iv-back h4{font-size:22px}
+  .iv-flip.is-flipped .iv-back p{max-width:none;font-size:18px}
+}
+@media (max-width:360px){
+  .iv{--iv-h2:30px}
+  .iv-flips{--d:260px;--s:.5}
+}
+@keyframes iv-flipin{from{transform:perspective(900px) rotateY(-90deg);opacity:.2}to{transform:none;opacity:1}}
+
+@media (prefers-reduced-motion:reduce){
+  .iv *,.iv *::before,.iv *::after{transition:none!important;animation:none!important}
+  html.js .iv-reveal{opacity:1;translate:none}
+}
+
+@media print{
+  html.js .iv-reveal{opacity:1;translate:none}
+  .iv-flips{display:block}
+  .iv-flip{width:auto;height:auto;margin-bottom:24px;pointer-events:auto;break-inside:avoid}
+  .iv-flip-inner{position:static;width:auto;height:auto;margin:0;transform:none!important;border-radius:0}
+  .iv-face{position:static;transform:none!important;border-radius:12px;padding:20px}
+  .iv-front{display:none}
+  .iv-back{display:block}
+}

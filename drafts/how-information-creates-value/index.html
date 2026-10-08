@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who We Serve (sections preview) - Population Science Management</title>
+<meta name="description" content="At Population Science Management (PSM), we believe health care can improve when organizations understand not only what happened, but why it happened.">
+
+<!--
+  STAGING PREVIEW ONLY: this <base> lets root-relative links and images
+  (/wp-content/uploads/..., /about-us/, etc.) resolve against the staging site
+  when this file is opened outside WordPress. Remove it when the page is built into WordPress.
+-->
+<base href="https://staging2.populationsciencemanagement.com/">
+
+<link rel="icon" href="/wp-content/uploads/2023/10/pms_favicon.png">
+<!-- Adobe Fonts kit already used by the site: sweet-sans-pro + avenir-lt-pro -->
+<link rel="stylesheet" href="https://use.typekit.net/sfe6nfi.css">
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* ==========================================================================
+   PSM design tokens (taken from Elementor kit 187 on staging2)
+   ========================================================================== */
+:root{
+  --primary:#002856;      /* kit: primary   */
+  --secondary:#3756E6;    /* kit: secondary */
+  --text:#485462;         /* kit: text      */
+  --accent:#0BBCD6;       /* kit: accent    */
+  --indigo:#4E58D1;
+  --mint:#E2F0EE;
+  --sky:#008BBF;
+  --blue:#2C4697;         /* headings, nav, button text */
+  --teal:#33B7C2;         /* gradient end, stat band    */
+  --cyan:#92E9F0;         /* button + dark-band accents */
+  --tint:#F2F8F7;         /* very light wash of --mint  */
+  --grad:linear-gradient(90deg,#2C4697 0%,#33B7C2 100%);
+  --shadow:0 3px 17px rgba(0,0,0,.1);
+  --font:"avenir-lt-pro","Avenir Next","Avenir","Nunito Sans","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;font-family:var(--font);font-size:20px;line-height:1.5;font-weight:500;color:#000;background:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,h4,p,ul,figure{margin:0}
+ul{padding:0;list-style:none}
+a{color:var(--blue)}
+button{font:inherit}
+.sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{width:100%;max-width:1230px;margin:0 auto;padding:0 15px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+/* Buttons: pill, cyan, per kit */
+.btn{display:inline-block;background:var(--cyan);color:var(--blue);font-family:var(--font);font-size:23px;line-height:1;font-weight:600;letter-spacing:2px;text-decoration:none;text-align:center;padding:20px 60px;border-radius:100px;border:0;cursor:pointer;transition:background-color .25s ease,color .25s ease,border-radius .25s ease,transform .25s ease}
+.btn:hover,.btn:focus-visible{background:#fff;color:var(--blue);border-radius:50px}
+
+/* ==========================================================================
+   Header (replica of staging2 header template)
+   ========================================================================== */
+.site-header{background:#fff;padding:30px 0}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 20px}
+.logo{display:block;flex:0 1 370px;min-width:0}
+.logo img{width:100%;max-width:370px;height:auto}
+.primary-nav{position:relative;flex:none}
+.menu{display:flex;align-items:center}
+.menu a{display:block;white-space:nowrap;padding:8px 12px;font-size:16px;line-height:22px;font-weight:500;color:var(--blue);text-decoration:none;background:#fff;transition:color .2s ease}
+.menu a:hover{color:var(--accent)}
+.menu .call a{padding:8px 0 8px 30px;margin-left:12px;background:#fff url("/wp-content/uploads/2026/03/call-icon.svg") 0 50%/20px auto no-repeat}
+.has-sub{position:relative}
+.has-sub>a .caret{display:inline-block;width:7px;height:7px;margin:0 0 3px 8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}
+.sub-menu{display:none;position:absolute;left:0;top:100%;z-index:30;min-width:190px;background:#fff;padding:10px;box-shadow:var(--shadow)}
+.sub-menu a{color:#000;white-space:nowrap}
+.sub-menu a:hover{color:var(--blue)}
+.has-sub:hover>.sub-menu,.has-sub:focus-within>.sub-menu,.has-sub.is-open>.sub-menu{display:block}
+.nav-toggle{display:none;width:57px;height:50px;padding:0;border:0;background:var(--blue);cursor:pointer;align-items:center;justify-content:center}
+.nav-toggle .bars{position:relative;display:block;width:22px;height:2px;background:#fff;transition:background .2s ease}
+.nav-toggle .bars::before,.nav-toggle .bars::after{content:"";position:absolute;left:0;width:22px;height:2px;background:#fff;transition:transform .25s ease}
+.nav-toggle .bars::before{top:-7px}
+.nav-toggle .bars::after{top:7px}
+.nav-toggle[aria-expanded="true"] .bars{background:transparent}
+.nav-toggle[aria-expanded="true"] .bars::before{transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .bars::after{transform:translateY(-7px) rotate(-45deg)}
+
+/* ==========================================================================
+   CTA band + footer (replica of staging2 footer template)
+   ========================================================================== */
+.site-footer{background:var(--grad);color:#fff}
+.cta{text-align:center;padding:90px 0 76px}
+.cta h2 span{display:inline-block}
+.cta h2{text-wrap:balance;max-width:1100px;margin:0 auto 38px;color:#fff}
+.footer-main{padding:30px 0 56px}
+.footer-main .wrap{max-width:1440px}
+.footer-grid{display:grid;grid-template-columns:423px minmax(0,1fr);gap:20px;align-items:start}
+.footer-brand img{width:100%;max-width:376px;height:auto;margin-bottom:34px}
+.footer-legal{display:flex;flex-wrap:wrap;gap:6px 30px}
+.footer-legal a,.footer-col a{color:#fff;text-decoration:none;font-size:20px;line-height:28px;font-weight:500;transition:color .2s ease}
+.footer-legal a:hover,.footer-col a:hover{color:var(--cyan)}
+.footer-copy{margin-top:12px;font-size:20px;line-height:28px}
+.footer-cols{display:grid;grid-template-columns:190fr 240fr 225fr 280fr;gap:20px}
+.footer-col{padding:10px}
+.footer-col h3{font-size:16px;line-height:22px;font-weight:900;color:#fff;margin-bottom:16px}
+.footer-col li+li{margin-top:10px}
+.footer-col p{font-size:16px;line-height:25.6px;font-weight:600}
+.footer-col p+p{margin-top:16px}
+.footer-col a.tel{font-size:inherit;line-height:inherit;font-weight:inherit}
+
+/* Footer stacks before the columns get cramped */
+@media (max-width:1280px){
+  .footer-grid{grid-template-columns:1fr;gap:36px}
+  .footer-cols{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+/* Hamburger menu: the desktop nav needs ~820-900px next to the logo, so collapse a little earlier than the 1024 tablet breakpoint */
+@media (max-width:1180px){
+  .primary-nav{position:static}
+  .nav-toggle{display:flex}
+  .site-header{position:relative}
+  .menu{display:none;position:absolute;right:20px;top:calc(100% - 4px);z-index:40;flex-direction:column;align-items:stretch;width:min(340px,calc(100vw - 40px));background:#fff;padding:10px;box-shadow:var(--shadow)}
+  .menu.is-open{display:flex}
+  .menu a{padding:12px}
+  .menu .call a{margin:0;padding:12px 12px 12px 42px;background-position:12px 50%}
+  .sub-menu{position:static;display:none;box-shadow:none;padding:0 0 0 14px}
+  .has-sub:hover>.sub-menu{display:none}
+  .has-sub.is-open>.sub-menu{display:block}
+}
+
+/* ==========================================================================
+   Page sections.
+   Every section below re-uses a layout that already exists on the staging
+   pages (Home, About Us, Our Solutions, Who We Serve). The tag in each
+   comment names the page it was taken from.
+   ========================================================================== */
+
+/* Shared type: heading / body sizes measured on staging */
+.section{position:relative;padding:100px 0}
+/* One H2 style for the whole page: 50px / 900 / sentence case (scales down on tablet and phone so it never overflows) */
+:root{--h2-size:50px}
+.sec-title,.section-title,.photoband h2,.cta h2,.principle-lead{font-size:var(--h2-size);line-height:1.15;font-weight:900;text-transform:none;letter-spacing:normal;text-wrap:balance}
+.sec-title,.section-title{color:var(--blue)}
+.sec-title.center{text-align:center}
+.sec-lead{max-width:840px;margin:18px auto 0;text-align:center;font-size:20px;line-height:28px;font-weight:500;color:#000}
+.dots{margin:14px 0 0;padding:0 0 0 22px;list-style:disc;color:#000}
+.dots li{font-size:20px;line-height:28px;font-weight:500;padding-left:4px}
+.dots li::marker{color:var(--teal)}
+.dots.two{columns:2;column-gap:36px}
+.dots.two li{break-inside:avoid}
+
+/* Entrance: gentle fade-up / slide-in (progressive enhancement: only hides when JS is running) */
+html.js .reveal{opacity:0;translate:0 28px;transition:opacity .8s ease,translate .8s cubic-bezier(.2,.7,.2,1),transform .35s ease,box-shadow .35s ease;transition-delay:var(--d,0s),var(--d,0s),0s,0s}
+html.js .reveal.in{opacity:1;translate:none}
+html.js .reveal-l{translate:-48px 0}
+html.js .reveal-r{translate:48px 0}
+
+/* ==========================================================================
+   1. Banner  (About Us / Our Solutions / Who We Serve: gradient page banner, outlined title)
+   ========================================================================== */
+.banner{background:var(--grad);padding:80px 0;text-align:center}
+.banner h1{font-size:clamp(52px,9.9vw,142px);line-height:1.1;font-weight:900;text-transform:uppercase;color:transparent;-webkit-text-stroke:2px #fff;text-wrap:balance}
+@supports not (-webkit-text-stroke:1px #fff){.banner h1{color:#fff}}
+
+/* ==========================================================================
+   2. Intro  (About Us "Why Choose Us?": text left, rounded photo right)
+   ========================================================================== */
+.split-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:70px;align-items:center}
+.split-text .sec-title{margin-bottom:26px}
+.split-text p{font-size:20px;line-height:28px;font-weight:500;color:#000}
+.split-text p+p{margin-top:14.4px}
+.photo{margin:0;border-radius:24px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo.tall{aspect-ratio:565/640}
+
+/* ==========================================================================
+   3. Principle  (Our Solutions "What happens to the data?": dotted navy band, cyan title, check rows)
+   ========================================================================== */
+.dark{position:relative;padding:80px 0;color:#fff;background:#0b1f4f url("/wp-content/uploads/2026/05/Image_About_What-happens-to-your-data.png") center/cover no-repeat}
+.dark-list{max-width:1090px;margin:44px auto 0;display:grid;gap:30px}
+.dark-list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:60px;align-items:center}
+.dark-list svg{width:40px;height:40px;fill:none;stroke:var(--cyan);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.dark-list h3{font-size:clamp(24px,2.1vw,30px);line-height:1.4;font-weight:900;color:var(--cyan)}
+.dark-after{max-width:790px;margin:48px auto 0;text-align:center;font-size:20px;line-height:28.8px;font-weight:500;color:#fff;text-wrap:pretty}
+
+/* ==========================================================================
+   4. Comparison  (Who We Serve "Why health study information matters": centred title + two circle photos with text on them)
+   ========================================================================== */
+.vs{display:grid;grid-template-columns:minmax(0,1fr) 200px minmax(0,1fr);align-items:center;margin-top:56px}
+.disc{position:relative;width:100%;max-width:480px;aspect-ratio:1/1;border-radius:50%;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;text-align:center;color:#fff;isolation:isolate}
+.disc>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.disc::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 50% 50%,rgba(0,20,70,.62) 0%,rgba(0,20,70,.42) 62%,rgba(0,20,70,.16) 100%)}
+.disc-past{justify-self:end;background:#4E58D1}
+.disc-future{justify-self:start;background:#0b3566}
+.disc .in{width:100%;padding:0 10%}
+.disc .badge{display:inline-block;font-size:13px;line-height:1;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:8px 15px;border-radius:100px;border:1.5px solid rgba(255,255,255,.75)}
+.disc-future .badge{background:var(--cyan);border-color:var(--cyan);color:var(--primary)}
+.disc h3{margin:16px 0 6px;font-size:clamp(26px,2.4vw,34px);line-height:1.15;font-weight:900}
+.disc .says{font-size:20px;line-height:28px;font-weight:500}
+.disc .says b{font-weight:800}
+/* Signal lists: a plain typographic ledger (hairline, two columns, small marker), deliberately not button-like.
+   Retrospective = flat dash marker; prospective = cyan forward arrow marker. */
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px 16px;max-width:340px;margin:22px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.4);text-align:left}
+.signals li{position:relative;padding-left:18px;font-size:16px;line-height:1.3;font-weight:600}
+.signals li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:2px;margin-top:-1px;background:rgba(255,255,255,.75)}
+.disc-future .signals{border-top-color:var(--cyan)}
+.disc-future .signals li::before{top:7px;margin-top:0;width:7px;height:7px;background:none;border-top:2px solid var(--cyan);border-right:2px solid var(--cyan);transform:rotate(45deg)}
+
+.bridge{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:0 10px}
+.bridge .lbl{font-size:14px;line-height:1.25;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--blue)}
+.bridge .arrow{position:relative;display:block;width:100%;max-width:150px;height:3px;background:var(--teal)}
+.bridge .arrow::after{content:"";position:absolute;right:-1px;top:50%;width:14px;height:14px;margin-top:-8px;border-top:3px solid var(--teal);border-right:3px solid var(--teal);transform:rotate(45deg)}
+
+/* ==========================================================================
+   5. From intent to action  (Our Solutions "The study process": large teal icon left, teal title + text right)
+   ========================================================================== */
+.rows{max-width:880px;margin:56px auto 0;display:grid;gap:56px}
+.row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:50px;align-items:start}
+.row>img{width:130px;height:auto}
+.row h3{font-size:clamp(24px,2.1vw,30px);line-height:1.4;font-weight:900;color:var(--teal);margin-bottom:10px}
+.row p{font-size:20px;line-height:28px;font-weight:500;color:#000}
+.row p+p{margin-top:14.4px}
+.row .dots+p{margin-top:16px}
+
+/* ==========================================================================
+   6. Intelligence model  (About Us "The Working Owner Model": rounded photo left, numbered timeline right)
+   ========================================================================== */
+.tl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:60px;align-items:start;max-width:1140px;margin:52px auto 0}
+.tl-grid .photo{position:sticky;top:28px;aspect-ratio:540/640}
+.tl{list-style:none;margin:0;padding:0}
+.tl>li{position:relative;padding:0 0 44px 94px}
+.tl>li:last-child{padding-bottom:0}
+.tl>li:not(:last-child)::before{content:"";position:absolute;left:30.5px;top:72px;bottom:-2px;width:3px;background:var(--teal)}
+.tl .num{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--teal);color:#fff;line-height:1}
+.tl .num .w{font-size:12px;font-weight:700;letter-spacing:.03em}
+.tl .num .n{font-size:26px;font-weight:700;margin-top:2px}
+.tl h3{font-size:clamp(22px,1.9vw,26px);line-height:1.25;font-weight:700;color:#1ABDC6;margin:2px 0 8px}
+.tl .dots{margin-top:0}
+.tl .dots li{font-size:18px;line-height:27px;color:#444}
+
+/* ==========================================================================
+   7. Who benefits  (Who We Serve circle photos with text on them, as seven flip circles)
+   ========================================================================== */
+.flips{--d:280px;--gap:22px;--full:520px;--s:.5385;display:grid;grid-template-columns:repeat(8,calc((var(--d) + var(--gap))/2));grid-auto-rows:calc((var(--d) + var(--gap))*.866);justify-content:center;margin:112px 0 0;padding-bottom:calc(var(--d)*.1)}
+.flip:nth-child(1){grid-column:1/3}
+.flip:nth-child(2){grid-column:3/5}
+.flip:nth-child(3){grid-column:5/7}
+.flip:nth-child(4){grid-column:7/9}
+.flip:nth-child(5){grid-column:2/4}
+.flip:nth-child(6){grid-column:4/6}
+.flip:nth-child(7){grid-column:6/8}
+
+.flip{position:relative;z-index:1;width:var(--d);height:var(--d);justify-self:center;perspective:1400px;pointer-events:none}
+.flip:hover,.flip:focus-within,.flip.is-flipped{z-index:20}
+.flip-inner{position:absolute;left:50%;top:50%;width:var(--full);height:var(--full);margin:calc(var(--full)/-2) 0 0 calc(var(--full)/-2);border-radius:50%;pointer-events:auto;cursor:pointer;outline:none;transform-style:preserve-3d;transform:translateX(0px) scale(var(--s)) rotateY(0deg);transition:transform .85s cubic-bezier(.25,.8,.25,1)}
+.flip-inner:focus-visible,.flip.is-flipped .flip-inner{transform:translateX(var(--dx,0px)) scale(1) rotateY(180deg)}
+@media (hover:hover) and (min-width:761px){.flip:hover .flip-inner{transform:translateX(var(--dx,0px)) scale(1) rotateY(180deg)}}
+
+.face{position:absolute;inset:0;border-radius:50%;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.face-front{background:var(--c);pointer-events:none}
+.face-front img{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.face-front::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(160deg,var(--ca),var(--ca2))}
+.face-front .t{position:absolute;inset:0;z-index:3;display:grid;place-items:center;padding:0 80px;text-align:center;font-size:46px;line-height:1.1;font-weight:900;color:#fff;text-wrap:balance}
+.face-front .hint{position:absolute;left:50%;bottom:48px;z-index:3;width:50px;height:50px;margin-left:-25px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.75)}
+.face-front .hint svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+.face-back{transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 64px;background:var(--c);color:#fff}
+.flip-inner:focus-visible .face-back{box-shadow:0 0 0 6px var(--cyan)}
+.face-back .intro-p{font-size:17.5px;line-height:1.36;font-weight:600;text-align:center;margin:0 0 15px;max-width:386px}
+.face-back .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;max-width:392px}
+.face-back .col{padding:0 11px 0 0}
+.face-back .col+.col{padding:0 0 0 14px;border-left:2px dashed rgba(146,233,240,.55)}
+.face-back ul li{position:relative;padding-left:21px;font-size:15px;line-height:1.28;font-weight:600}
+.face-back ul li+li{margin-top:7px}
+.face-back ul li::before{content:"";position:absolute;left:0;top:.08em;width:15px;height:15px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2392E9F0' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10.8'/%3E%3Cpath d='M7 12.6l3.4 3.5L17.2 8.6'/%3E%3C/svg%3E") center/contain no-repeat}
+.face-back h4{font-size:16.5px;line-height:1.2;font-weight:900;color:#fff;margin:0 0 9px;padding-bottom:6px;border-bottom:3px solid var(--cyan);display:inline-block}
+
+/* The two duotone families used on Who We Serve: indigo, and navy-to-teal */
+.flip:nth-child(odd){--c:#4E58D1;--ca:rgba(62,70,205,.80);--ca2:rgba(104,114,232,.68)}
+.flip:nth-child(even){--c:#002856;--ca:rgba(0,40,86,.84);--ca2:rgba(30,150,175,.58)}
+
+/* ==========================================================================
+   8. Intelligence exchange  (Home "Health Benefit Options": full-width photo band, white title, icon + title items, closing outcome statement)
+   ========================================================================== */
+.photoband{position:relative;padding:120px 0;color:#fff;background:#2b6d88 url("/wp-content/uploads/2026/03/choose_image.jpeg") 50% 50%/cover no-repeat}
+.photoband::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,40,86,.66) 0%,rgba(0,40,86,.48) 42%,rgba(0,40,86,0) 78%)}
+.photoband .wrap{position:relative}
+.pb-col{max-width:600px}
+.photoband h2{color:#fff;margin-bottom:24px}
+.photoband p{font-size:20px;line-height:28px;font-weight:500;color:#fff}
+.pb-sub{font-size:clamp(25px,2.1vw,30px);line-height:1.2;font-weight:900;color:var(--cyan);margin-bottom:14px}
+.pb-items{margin-top:30px;display:grid;gap:14px}
+.pb-item{display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;align-items:center;padding:14px 22px 14px 14px;border-radius:18px;border:1px solid rgba(146,233,240,.35);background:rgba(0,40,86,.45)}
+.pb-item .ico{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:2px solid var(--cyan);background:rgba(146,233,240,.12)}
+.pb-item .ico svg{width:28px;height:28px;fill:none;stroke:var(--cyan);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.pb-item .name{font-size:clamp(20px,1.7vw,24px);line-height:1.25;font-weight:900;color:#fff}
+.pb-outcome{margin-top:52px;padding-top:36px;border-top:1px solid rgba(146,233,240,.4)}
+.pb-outcome .pb-sub{margin-bottom:12px}
+.photoband .pb-statement{font-size:clamp(24px,2.1vw,30px);line-height:1.3;font-weight:900;color:#fff;text-wrap:balance}
+.pb-statement span{display:block}
+.pb-statement span:last-child{color:var(--cyan)}
+
+/* ==========================================================================
+   9. Data governance  (Who We Serve "How we serve trailblazers": teal icon rows left, rounded photo right)
+   ========================================================================== */
+.gov-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:70px;align-items:start}
+.gov-grid .sec-title{margin-bottom:34px}
+.gov-grid .rows{margin:0;max-width:none;gap:40px}
+.gov-grid .row{grid-template-columns:103px minmax(0,1fr);gap:26px}
+.gov-grid .row>img{width:103px}
+.gov-grid .photo{position:sticky;top:28px;aspect-ratio:565/640}
+.gov-after{max-width:900px;margin:70px auto 0;text-align:center;font-size:20px;line-height:28px;font-weight:500;color:#000;text-wrap:pretty}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width:1239px) and (min-width:761px){
+  .flips{--d:230px;--gap:22px;--s:.4423;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap);padding-bottom:0}
+  .flip{flex:none}
+}
+
+@media (max-width:1100px){
+  .vs{grid-template-columns:1fr;max-width:480px;margin-inline:auto;gap:0}
+  .disc-past,.disc-future{justify-self:center}
+  .bridge{padding:34px 0}
+  .bridge .arrow{width:3px;height:70px;max-width:none}
+  .bridge .arrow::after{right:auto;left:50%;top:auto;bottom:-1px;margin:0 0 0 -8px;transform:rotate(135deg)}
+}
+
+@media (max-width:1024px){
+  :root{--h2-size:42px}
+  .section{padding:80px 0}
+  .banner{padding:64px 0}
+  .split-grid{grid-template-columns:1fr;gap:48px}
+  .split-grid .photo,.gov-grid .photo,.tl-grid .photo{max-width:565px;margin-inline:auto;width:100%}
+  .photo.tall{aspect-ratio:4/3}
+  .tl-grid{grid-template-columns:1fr;gap:48px}
+  .tl-grid .photo{position:static;aspect-ratio:4/3}
+  .gov-grid{grid-template-columns:1fr;gap:56px}
+  .gov-grid .photo{position:static;aspect-ratio:4/3}
+  .photoband{padding:90px 0}
+  .photoband::before{background:linear-gradient(90deg,rgba(0,40,86,.72) 0%,rgba(0,40,86,.55) 100%)}
+}
+
+@media (max-width:900px){
+  .rows{gap:48px}
+  .row{grid-template-columns:minmax(0,1fr);gap:18px}
+  .row>img,.gov-grid .row>img{width:104px}
+  .dots.two{columns:1}
+}
+
+@media (max-width:767px){
+  :root{--h2-size:34px}
+  body{font-size:18px}
+  .wrap{padding:0 20px}
+  .section{padding:64px 0}
+  .site-header{padding:22px 0}
+  .header-row{padding:0 20px}
+  .logo{flex-basis:62vw;max-width:290px}
+  .banner{padding:48px 0}
+  .banner h1{-webkit-text-stroke-width:1.5px}
+  .btn{font-size:20px;padding:18px 40px;letter-spacing:1.5px}
+  .sec-lead,.split-text p,.row p,.gov-after,.dark-after,.photoband p{font-size:18px;line-height:26px}
+  .dots li{font-size:18px;line-height:26px}
+  .dark{padding:60px 0}
+  .dark-list li{grid-template-columns:32px minmax(0,1fr);gap:20px;align-items:start}
+  .dark-list svg{width:32px;height:32px}
+  .tl>li{padding-left:80px}
+  .tl .num{width:56px;height:56px}
+  .tl .num .n{font-size:22px}
+  .tl>li:not(:last-child)::before{left:26.5px;top:64px}
+  .tl .dots li{font-size:17px;line-height:25px}
+  .photoband{padding:70px 0}
+  .pb-item{grid-template-columns:46px minmax(0,1fr);gap:14px;padding:12px 16px 12px 12px}
+  .pb-item .ico{width:46px;height:46px}
+  .pb-item .ico svg{width:24px;height:24px}
+  .pb-outcome{margin-top:40px;padding-top:30px}
+  .gov-after{margin-top:48px}
+  .cta{padding:64px 0 52px}
+  .footer-main{padding:10px 0 44px}
+  .footer-grid{text-align:center}
+  .footer-cols{grid-template-columns:1fr;gap:6px;order:1}
+  .footer-brand{order:2}
+  .footer-brand img{margin:0 auto 28px;max-width:300px}
+  .footer-legal{justify-content:center}
+  .footer-col{padding:10px 0}
+  .footer-col h3{margin-bottom:10px}
+  .footer-col p{font-size:18px}
+}
+
+/* Circles with a lot of text turn into rounded cards on phones so nothing is cramped */
+@media (max-width:600px){
+  .gov-grid .row{grid-template-columns:minmax(0,1fr);gap:16px}
+}
+@media (max-width:560px){
+  .vs{max-width:420px}
+  .disc{aspect-ratio:auto;border-radius:28px;padding:44px 0 46px}
+  .disc .in{padding:0 22px}
+}
+
+/* Flip circles on phones: tap to turn the circle into a readable card */
+@media (max-width:760px){
+  .flips{--d:300px;--s:.5769;display:grid;grid-template-columns:1fr;grid-auto-rows:auto;gap:30px;justify-items:center;margin-top:56px;padding-bottom:0}
+  .flip:nth-child(n){grid-column:auto}
+  .flip{pointer-events:auto}
+  .flip-inner:focus-visible{transform:translateX(0px) scale(var(--s)) rotateY(0deg)}
+  .flip.is-flipped{width:100%;max-width:520px;height:auto}
+  .flip.is-flipped .flip-inner{position:relative;left:auto;top:auto;width:100%;height:auto;margin:0;border-radius:28px;transform:none;animation:flipin .6s cubic-bezier(.25,.8,.25,1)}
+  .flip.is-flipped .face-front{display:none}
+  .flip.is-flipped .face-back{position:relative;inset:auto;transform:none;border-radius:28px;padding:34px 26px 30px;align-items:stretch}
+  .flip.is-flipped .face-back .intro-p{text-align:left;font-size:18px;max-width:none;margin-bottom:20px}
+  .flip.is-flipped .face-back .cols{grid-template-columns:1fr;max-width:none;gap:24px}
+  .flip.is-flipped .face-back .col,.flip.is-flipped .face-back .col+.col{padding:0;border-left:0}
+  .flip.is-flipped .face-back ul li{font-size:17px;padding-left:26px}
+  .flip.is-flipped .face-back ul li::before{width:18px;height:18px}
+  .flip.is-flipped .face-back h4{font-size:18px}
+}
+@media (max-width:360px){
+  :root{--h2-size:30px}
+  .flips{--d:260px;--s:.5}
+}
+@keyframes flipin{from{transform:perspective(900px) rotateY(-90deg);opacity:.2}to{transform:none;opacity:1}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  html.js .reveal{opacity:1;translate:none}
+}
+
+@media print{
+  .site-header,.site-footer .cta{display:none}
+  html.js .reveal{opacity:1;translate:none}
+  .flips{display:block}
+  .flip{width:auto;height:auto;margin-bottom:24px;pointer-events:auto;break-inside:avoid}
+  .flip-inner{position:static;width:auto;height:auto;margin:0;transform:none!important;border-radius:0}
+  .face{position:static;transform:none!important;border-radius:12px;padding:20px}
+  .face-front{display:none}
+  .face-back{display:block;color:#fff}
+}
+/* ==========================================================================
+   Principle band and "From intent to action" (kept from the earlier version at the client's request)
+   ========================================================================== */
+/* Check list: circle-check bullet from the site's feature list */
+.checks li{position:relative;padding-left:38px;font-size:18px;line-height:1.45;font-weight:500}
+.checks li+li{margin-top:12px}
+.checks li::before{content:"";position:absolute;left:0;top:.08em;width:25px;height:25px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2333B7C2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10.8'/%3E%3Cpath d='M7 12.6l3.4 3.5L17.2 8.6'/%3E%3C/svg%3E") center/contain no-repeat}
+.checks.on-dark li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2392E9F0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10.8'/%3E%3Cpath d='M7 12.6l3.4 3.5L17.2 8.6'/%3E%3C/svg%3E")}
+
+
+.section-title.center{text-align:center}
+.section-title.center::after{content:"";display:block;width:92px;height:6px;border-radius:6px;background:var(--grad);margin:24px auto 0}
+
+/* ==========================================================================
+   Principle band
+   ========================================================================== */
+.principle{position:relative;overflow:hidden;background:linear-gradient(100deg,#002856 0%,#2C4697 100%);color:#fff;padding:90px 0 96px}
+.principle::before{content:"";position:absolute;inset:0;background:url("/wp-content/uploads/2026/05/Image_About_What-happens-to-your-data.png") right center/cover no-repeat;opacity:.4}
+.principle .wrap{position:relative}
+.principle-lead{text-align:center;color:var(--cyan);margin-bottom:46px}
+.principle-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;counter-reset:p}
+.principle-list li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 42px;font-size:clamp(24px,2.5vw,34px);line-height:1.18;font-weight:900;color:#fff;text-wrap:balance}
+.principle-list li+li{border-left:2px dashed rgba(146,233,240,.4)}
+.principle-list .pico{display:grid;place-items:center;width:104px;height:104px;margin-bottom:26px;border-radius:50%;border:3px solid var(--cyan);background:rgba(146,233,240,.1);box-shadow:0 0 0 10px rgba(146,233,240,.08);transition:transform .35s ease,background-color .35s ease}
+.principle-list li:hover .pico{transform:scale(1.08);background:rgba(146,233,240,.22)}
+.principle-list .pico svg{width:52px;height:52px;fill:none;stroke:var(--cyan);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.principle-after{max-width:900px;margin:60px auto 0;padding-top:44px;border-top:1px solid rgba(146,233,240,.3);text-align:center;font-size:clamp(20px,1.8vw,24px);line-height:1.55;font-weight:500;color:#fff;text-wrap:pretty}
+
+
+/* ==========================================================================
+   2. From intent to action
+   ========================================================================== */
+.intent{overflow:hidden}
+.intent .wrap{position:relative}
+.flow{position:relative;display:grid;gap:64px;margin-top:96px}
+.flow::before{content:"";position:absolute;left:50%;top:62px;bottom:62px;margin-left:-1.5px;border-left:3px dashed rgba(51,183,194,.55)}
+.frow{--c:var(--blue);position:relative;display:grid;grid-template-columns:minmax(0,1fr) 124px minmax(0,1fr);gap:0 40px;align-items:center}
+.frow:nth-child(2){--c:var(--teal)}
+.frow:nth-child(3){--c:var(--indigo)}
+.frow .medal{grid-column:2;grid-row:1;position:relative;z-index:1;width:124px;height:124px;display:grid;place-items:center;border-radius:50%;background:#fff;border:7px solid var(--c);box-shadow:0 0 0 12px #fff,0 12px 30px rgba(0,40,86,.18)}
+.frow .medal img{width:60px;height:60px;object-fit:contain}
+.frow .ft{grid-column:1;grid-row:1}
+.frow .fl{grid-column:3;grid-row:1}
+.frow:nth-child(even) .ft{grid-column:3}
+.frow:nth-child(even) .fl{grid-column:1}
+.frow h3{font-size:clamp(28px,2.9vw,40px);line-height:1.15;font-weight:900;color:var(--blue);margin-bottom:18px;text-wrap:balance}
+.frow .ft p{font-size:20px;line-height:1.6;color:var(--text)}
+.frow .ft p+p{margin-top:14px}
+.frow .fl{background:#fff;border-radius:22px;border-top:6px solid var(--c);box-shadow:var(--shadow);padding:34px 34px 32px;transition:transform .35s ease,box-shadow .35s ease}
+.frow .fl:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(0,40,86,.18)}
+.frow .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 26px}
+.frow .checks li+li{margin-top:0}
+.frow .checks li{color:#1d2733}
+.frow .foot{margin-top:26px;padding-top:22px;border-top:2px dashed rgba(44,70,151,.22)}
+.frow .foot p{font-size:18px;line-height:1.55;color:var(--blue);font-weight:600}
+
+
+/* Responsive rules for the two sections above (from the earlier version) */
+@media (max-width:900px){
+  .principle{padding:72px 0 76px}
+  .principle-list{grid-template-columns:1fr;gap:42px;max-width:560px;margin-inline:auto}
+  .principle-list li{padding:0}
+  .principle-list li+li{border-left:0;border-top:2px dashed rgba(146,233,240,.4);padding-top:42px}
+  .flow::before{display:none}
+  .flow{gap:80px;max-width:640px;margin-inline:auto}
+  .frow{grid-template-columns:minmax(0,1fr);gap:26px}
+  .frow .medal{grid-column:1;grid-row:1;justify-self:center}
+  .frow .ft,.frow:nth-child(even) .ft{grid-column:1;grid-row:2}
+  .frow .fl,.frow:nth-child(even) .fl{grid-column:1;grid-row:3}
+  .frow h3{text-align:center}
+}
+@media (max-width:767px){
+  .principle-list .pico{width:88px;height:88px}
+  .principle-list .pico svg{width:44px;height:44px}
+  .frow .checks li{font-size:17px}
+  .frow .ft p{font-size:18px}
+  .frow .fl{padding:28px 22px 26px}
+  .frow .checks{grid-template-columns:1fr;gap:13px}
+  .frow .medal{width:104px;height:104px}
+  .frow .medal img{width:50px;height:50px}
+}
+/* ==========================================================================
+   PSM · "How Information Creates Value" — two sections
+   1. .iv-intro  : text + check list left, rounded photo right (About Us layout)
+   2. .iv-uses   : five flipping circles (same mechanic as the How We Work page)
+   Self-contained: every class is prefixed .iv-, tokens live on .iv, so it can be
+   dropped into any page without touching the page's own CSS.
+   ========================================================================== */
+.iv{--iv-primary:#002856;--iv-blue:#2C4697;--iv-teal:#33B7C2;--iv-cyan:#92E9F0;--iv-indigo:#4E58D1;--iv-h2:50px;position:relative;padding:100px 0;color:#000;font-family:"avenir-lt-pro","Avenir Next","Avenir","Nunito Sans","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:20px;line-height:1.5;font-weight:500}
+.iv *,.iv *::before,.iv *::after{box-sizing:border-box}
+:where(.iv) :where(h2,h3,h4,p,ul,figure){margin:0;padding:0}
+:where(.iv) ul{list-style:none}
+:where(.iv) img{display:block;max-width:100%;height:auto}
+.iv-wrap{width:100%;max-width:1230px;margin:0 auto;padding:0 15px}
+.iv-title{font-size:var(--iv-h2);line-height:1.15;font-weight:900;text-transform:none;letter-spacing:normal;color:var(--iv-blue);text-wrap:balance}
+.iv-title.center{text-align:center}
+.iv-lead{max-width:840px;margin:18px auto 0;text-align:center;font-size:20px;line-height:28px;font-weight:500;color:#000}
+
+/* Entrance: gentle fade-up (only hides when JS is running) */
+html.js .iv-reveal{opacity:0;translate:0 28px;transition:opacity .8s ease,translate .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+html.js .iv-reveal.in{opacity:1;translate:none}
+
+/* --------------------------------------------------------------------------
+   1. Intro
+   -------------------------------------------------------------------------- */
+.iv-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:70px;align-items:center}
+.iv-sub{margin:20px 0 22px;font-size:clamp(24px,2.1vw,30px);line-height:1.3;font-weight:900;color:var(--iv-teal)}
+.iv-text p{font-size:20px;line-height:28px;font-weight:500;color:#000}
+.iv-text p+p{margin-top:14.4px}
+.iv-list{margin:18px 0 0;display:grid;gap:12px}
+.iv-list li{position:relative;padding-left:38px;font-size:20px;line-height:28px;font-weight:500;color:#000}
+.iv-list li::before{content:"";position:absolute;left:0;top:1px;width:25px;height:25px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2333B7C2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10.8'/%3E%3Cpath d='M7 12.6l3.4 3.5L17.2 8.6'/%3E%3C/svg%3E") center/contain no-repeat}
+.iv-pattern{margin-top:32px;padding:4px 0 4px 22px;border-left:5px solid var(--iv-teal);font-size:clamp(20px,1.8vw,24px);line-height:1.4;font-weight:800;color:var(--iv-blue);text-wrap:pretty}
+.iv-photo{margin:0;border-radius:24px;overflow:hidden;aspect-ratio:565/640;background:var(--iv-indigo)}
+.iv-photo img{width:100%;height:100%;object-fit:cover}
+
+/* --------------------------------------------------------------------------
+   2. Five flip circles (header on the front, context on the back)
+   Desktop: hover / keyboard focus flips (pure CSS). Touch: tap toggles .is-flipped.
+   Phones: the tapped circle turns into a readable card.
+   -------------------------------------------------------------------------- */
+.iv-flips{--d:320px;--gap:22px;--full:520px;--s:.6154;display:grid;grid-template-columns:repeat(6,calc((var(--d) + var(--gap))/2));grid-auto-rows:calc((var(--d) + var(--gap))*.866);justify-content:center;margin:112px 0 0;padding-bottom:calc(var(--d)*.1)}
+.iv-flip:nth-child(1){grid-column:1/3}
+.iv-flip:nth-child(2){grid-column:3/5}
+.iv-flip:nth-child(3){grid-column:5/7}
+.iv-flip:nth-child(4){grid-column:2/4}
+.iv-flip:nth-child(5){grid-column:4/6}
+
+.iv-flip{position:relative;z-index:1;width:var(--d);height:var(--d);justify-self:center;perspective:1400px;pointer-events:none}
+.iv-flip:hover,.iv-flip:focus-within,.iv-flip.is-flipped{z-index:20}
+.iv-flip-inner{position:absolute;left:50%;top:50%;width:var(--full);height:var(--full);margin:calc(var(--full)/-2) 0 0 calc(var(--full)/-2);border-radius:50%;pointer-events:auto;cursor:pointer;outline:none;transform-style:preserve-3d;transform:translateX(0px) scale(var(--s)) rotateY(0deg);transition:transform .85s cubic-bezier(.25,.8,.25,1)}
+.iv-flip-inner:focus-visible,.iv-flip.is-flipped .iv-flip-inner{transform:translateX(var(--dx,0px)) scale(1) rotateY(180deg)}
+@media (hover:hover) and (min-width:761px){.iv-flip:hover .iv-flip-inner{transform:translateX(var(--dx,0px)) scale(1) rotateY(180deg)}}
+
+.iv-face{position:absolute;inset:0;border-radius:50%;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.iv-front{background:var(--c);pointer-events:none}
+.iv-front img{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.iv-front::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(160deg,var(--ca),var(--ca2))}
+.iv-front .t{position:absolute;inset:0;z-index:3;display:grid;place-items:center;padding:0 80px;text-align:center;font-size:46px;line-height:1.1;font-weight:900;color:#fff;text-wrap:balance}
+.iv-front .hint{position:absolute;left:50%;bottom:48px;z-index:3;width:50px;height:50px;margin-left:-25px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.75)}
+.iv-front .hint svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+.iv-back{transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 80px;background:var(--c);color:#fff;text-align:center}
+.iv-flip-inner:focus-visible .iv-back{box-shadow:0 0 0 6px var(--iv-cyan)}
+.iv-back h4{display:inline-block;margin:0 0 22px;padding-bottom:10px;font-size:28px;line-height:1.15;font-weight:900;color:#fff;border-bottom:3px solid var(--iv-cyan);text-wrap:balance}
+.iv-back p{max-width:360px;font-size:22px;line-height:1.38;font-weight:600;color:#fff;text-wrap:pretty}
+
+/* Two duotone families, as on the rest of the site: indigo, and navy-to-teal */
+.iv-flip:nth-child(odd){--c:#4E58D1;--ca:rgba(62,70,205,.80);--ca2:rgba(104,114,232,.68)}
+.iv-flip:nth-child(even){--c:#002856;--ca:rgba(0,40,86,.84);--ca2:rgba(30,150,175,.58)}
+
+/* Tablet: circles wrap and stay centred */
+@media (max-width:1239px) and (min-width:761px){
+  .iv-flips{--d:230px;--gap:22px;--s:.4423;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap);padding-bottom:0}
+  .iv-flip{flex:none}
+}
+
+@media (max-width:1024px){
+  .iv{--iv-h2:42px;padding:80px 0}
+  .iv-split{grid-template-columns:1fr;gap:48px}
+  .iv-photo{max-width:565px;margin-inline:auto;width:100%;aspect-ratio:4/3}
+}
+
+@media (max-width:767px){
+  .iv{--iv-h2:34px;padding:64px 0;font-size:18px}
+  .iv-wrap{padding:0 20px}
+  .iv-lead,.iv-text p,.iv-list li{font-size:18px;line-height:26px}
+  .iv-list li{padding-left:34px}
+}
+
+/* Phones: tap a circle and it turns into a readable card */
+@media (max-width:760px){
+  .iv-flips{--d:300px;--s:.5769;display:grid;grid-template-columns:1fr;grid-auto-rows:auto;gap:30px;justify-items:center;margin-top:56px;padding-bottom:0}
+  .iv-flip:nth-child(n){grid-column:auto}
+  .iv-flip{pointer-events:auto}
+  .iv-flip-inner:focus-visible{transform:translateX(0px) scale(var(--s)) rotateY(0deg)}
+  .iv-flip.is-flipped{width:100%;max-width:520px;height:auto}
+  .iv-flip.is-flipped .iv-flip-inner{position:relative;left:auto;top:auto;width:100%;height:auto;margin:0;border-radius:28px;transform:none;animation:iv-flipin .6s cubic-bezier(.25,.8,.25,1)}
+  .iv-flip.is-flipped .iv-front{display:none}
+  .iv-flip.is-flipped .iv-back{position:relative;inset:auto;transform:none;border-radius:28px;padding:36px 26px 34px}
+  .iv-flip.is-flipped .iv-back h4{font-size:22px}
+  .iv-flip.is-flipped .iv-back p{max-width:none;font-size:18px}
+}
+@media (max-width:360px){
+  .iv{--iv-h2:30px}
+  .iv-flips{--d:260px;--s:.5}
+}
+@keyframes iv-flipin{from{transform:perspective(900px) rotateY(-90deg);opacity:.2}to{transform:none;opacity:1}}
+
+@media (prefers-reduced-motion:reduce){
+  .iv *,.iv *::before,.iv *::after{transition:none!important;animation:none!important}
+  html.js .iv-reveal{opacity:1;translate:none}
+}
+
+@media print{
+  html.js .iv-reveal{opacity:1;translate:none}
+  .iv-flips{display:block}
+  .iv-flip{width:auto;height:auto;margin-bottom:24px;pointer-events:auto;break-inside:avoid}
+  .iv-flip-inner{position:static;width:auto;height:auto;margin:0;transform:none!important;border-radius:0}
+  .iv-face{position:static;transform:none!important;border-radius:12px;padding:20px}
+  .iv-front{display:none}
+  .iv-back{display:block}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="header-row">
+    <a class="logo" href="/"><img src="/wp-content/uploads/2022/04/PSM_LOGO_HORIZ_1_CMYK.svg" alt="Population Science Management" width="370" height="73"></a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle menu</span><span class="bars" aria-hidden="true"></span>
+      </button>
+      <ul id="primary-menu" class="menu">
+        <li><a href="/about-us/">About</a></li>
+        <li><a href="/our-solutions/">Our Solutions</a></li>
+        <li><a href="/who-we-serve/">Who We Serve</a></li>
+        <li><a href="/gigcare/">GigCare</a></li>
+        <li class="has-sub">
+          <a href="#" aria-haspopup="true" aria-expanded="false">Resources<i class="caret" aria-hidden="true"></i></a>
+          <ul class="sub-menu">
+            <li><a href="/resources/">CDR Resources</a></li>
+            <li><a href="/blogs/">Blogs</a></li>
+            <li><a href="/contact-us/">Contact</a></li>
+          </ul>
+        </li>
+        <li><a href="/recruiters/">Recruiters Tool Kit</a></li>
+        <li class="call"><a href="tel:866-278-2420">Call : 866-278-2420</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="banner">
+    <div class="wrap">
+      <h1>WHO WE SERVE</h1>
+    </div>
+  </section>
+
+  <!-- ============================ HOW INFORMATION CREATES VALUE · 1. INTRO (About Us layout: text + list left, rounded photo right) ============================ -->
+  <section class="iv iv-intro" id="how-information-creates-value" aria-labelledby="iv-title">
+    <div class="iv-wrap">
+      <div class="iv-split">
+        <div class="iv-text iv-reveal">
+          <h2 class="iv-title" id="iv-title">How Information Creates Value</h2>
+          <h3 class="iv-sub">From Individual Experiences to Health Intelligence</h3>
+          <p>Every participant contributes valuable insight into how healthcare works in the real world.</p>
+          <p>The information collected through Health Studies may be combined with other authorized data sources to better understand:</p>
+          <ul class="iv-list">
+            <li>What healthcare challenges people are facing</li>
+            <li>Why people delay or avoid care</li>
+            <li>Barriers to medication access</li>
+            <li>Benefit affordability concerns</li>
+            <li>Healthcare navigation difficulties</li>
+            <li>Emerging healthcare trends</li>
+          </ul>
+          <p class="iv-pattern">Rather than focusing on isolated experiences, PSM identifies large patterns that can help improve healthcare systems, benefits, and services.</p>
+        </div>
+        <figure class="iv-photo iv-reveal" style="--d:.12s"><img src="/wp-content/uploads/2026/09/REACH_images_Small-Business-1.png" alt="" width="640" height="640" loading="lazy" style="object-position:40% 40%"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ HOW INFORMATION CREATES VALUE · 2. HOW ORGANIZATIONS USE PSM INSIGHTS (5 flip circles, as on How We Work) ============================ -->
+  <section class="iv iv-uses" id="how-organizations-use-psm-insights" aria-labelledby="iv-uses-title">
+    <div class="iv-wrap">
+      <h2 class="iv-title center" id="iv-uses-title">How Organizations Use PSM Insights</h2>
+      <p class="iv-lead">Organizations may use PSM intelligence to:</p>
+
+      <div class="iv-flips">
+        <div class="iv-flip">
+          <div class="iv-flip-inner" tabindex="0" role="group" aria-labelledby="iv-fl-1">
+            <div class="iv-face iv-front">
+              <img src="/wp-content/uploads/2026/04/about-imageV2.jpg" alt="" width="677" height="685" loading="lazy" style="object-position:50% 35%">
+              <h3 class="t" id="iv-fl-1">Improve Access to Care</h3>
+              <span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></span>
+            </div>
+            <div class="iv-face iv-back">
+              <h4>Improve Access to Care</h4>
+              <p>Understand what prevents people from receiving the care, medications, and services they need.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="iv-flip">
+          <div class="iv-flip-inner" tabindex="0" role="group" aria-labelledby="iv-fl-2">
+            <div class="iv-face iv-front">
+              <img src="/wp-content/uploads/2026/03/Group-288.jpg" alt="" width="900" height="722" loading="lazy" style="object-position:60% 40%">
+              <h3 class="t" id="iv-fl-2">Improve Affordability</h3>
+              <span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></span>
+            </div>
+            <div class="iv-face iv-back">
+              <h4>Improve Affordability</h4>
+              <p>Identify cost-related challenges that impact healthcare decisions and outcomes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="iv-flip">
+          <div class="iv-flip-inner" tabindex="0" role="group" aria-labelledby="iv-fl-3">
+            <div class="iv-face iv-front">
+              <img src="/wp-content/uploads/2026/03/Matters-image.jpg" alt="" width="900" height="600" loading="lazy" style="object-position:50% 35%">
+              <h3 class="t" id="iv-fl-3">Improve Health Benefits</h3>
+              <span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></span>
+            </div>
+            <div class="iv-face iv-back">
+              <h4>Improve Health Benefits</h4>
+              <p>Design benefits that better align with the needs and priorities of individuals and families.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="iv-flip">
+          <div class="iv-flip-inner" tabindex="0" role="group" aria-labelledby="iv-fl-4">
+            <div class="iv-face iv-front">
+              <img src="/wp-content/uploads/2026/06/ChatGPT-Image-Jun-10-2026-04_59_53-PM.png" alt="" width="1666" height="944" loading="lazy" style="object-position:97% 30%">
+              <h3 class="t" id="iv-fl-4">Improve Member Experiences</h3>
+              <span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></span>
+            </div>
+            <div class="iv-face iv-back">
+              <h4>Improve Member Experiences</h4>
+              <p>Reduce friction, improve engagement, and provide more meaningful support throughout the healthcare journey.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="iv-flip">
+          <div class="iv-flip-inner" tabindex="0" role="group" aria-labelledby="iv-fl-5">
+            <div class="iv-face iv-front">
+              <img src="/wp-content/uploads/2026/03/choose_image.jpeg" alt="" width="1901" height="1199" loading="lazy" style="object-position:68% 40%">
+              <h3 class="t" id="iv-fl-5">Improve Healthcare Innovation</h3>
+              <span class="hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v5h-5"/></svg></span>
+            </div>
+            <div class="iv-face iv-back">
+              <h4>Improve Healthcare Innovation</h4>
+              <p>Support the development of new products, services, technologies, and healthcare solutions that address real-world challenges.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ CTA + FOOTER ============================ -->
+<footer class="site-footer">
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="wrap">
+      <h2 id="cta-title"><span>Better Data.</span> <span>Better Decisions.</span> <span>Better Outcomes.</span></h2>
+      <a class="btn" href="/contact-us/">Get Started Now!</a>
+    </div>
+  </section>
+
+  <div class="footer-main">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/"><img src="/wp-content/uploads/2022/04/footer-logo.svg" alt="PSM footer Logo" width="376" height="127" loading="lazy"></a>
+          <ul class="footer-legal">
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/sms-terms-of-service/">SMS Terms of Service</a></li>
+          </ul>
+          <p class="footer-copy">© Population Science Management 2026</p>
+        </div>
+
+        <div class="footer-cols">
+          <nav class="footer-col" aria-labelledby="f-company">
+            <h3 id="f-company">Company</h3>
+            <ul>
+              <li><a href="/about-us/">About</a></li>
+              <li><a href="/who-we-serve/">Who We Serve</a></li>
+              <li><a href="/gigcare/">GigCare</a></li>
+            </ul>
+          </nav>
+          <nav class="footer-col" aria-labelledby="f-solutions">
+            <h3 id="f-solutions">Solutions</h3>
+            <ul>
+              <li><a href="/our-solutions/#thesurveyprocess">The Survey Process</a></li>
+              <li><a href="/who-we-serve/#respondentrole">The Consumer Data Respondent Role</a></li>
+              <li><a href="/our-solutions/#faq">FAQ</a></li>
+            </ul>
+          </nav>
+          <nav class="footer-col" aria-labelledby="f-resources">
+            <h3 id="f-resources">Resources</h3>
+            <ul>
+              <li><a href="/recruiters/">Recruiter’s Toolkit</a></li>
+            </ul>
+          </nav>
+          <div class="footer-col">
+            <h3>Reach us at</h3>
+            <p>PSM Employees:<br><a class="tel" href="tel:866-278-2420">866-278-2420</a></p>
+            <p>Call A Recruiter:<br><a class="tel" href="tel:877-467-0374">877-467-0374</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=document;
+
+  /* Mobile menu */
+  var toggle=d.querySelector('.nav-toggle'), menu=d.getElementById('primary-menu');
+  if(toggle&&menu){
+    toggle.addEventListener('click',function(){
+      var open=toggle.getAttribute('aria-expanded')==='true';
+      toggle.setAttribute('aria-expanded',String(!open));
+      menu.classList.toggle('is-open',!open);
+    });
+    d.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true'){toggle.setAttribute('aria-expanded','false');menu.classList.remove('is-open');toggle.focus();}
+    });
+  }
+
+  /* Resources sub-menu (click/tap; hover and focus are handled in CSS on desktop) */
+  d.querySelectorAll('.has-sub > a').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var li=a.parentNode, open=li.classList.toggle('is-open');
+      a.setAttribute('aria-expanded',String(open));
+    });
+  });
+
+  /* Scroll reveal */
+  var rev=[].slice.call(d.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rev.forEach(function(el){io.observe(el);});
+  }else{
+    rev.forEach(function(el){el.classList.add('in');});
+  }
+
+  /* Who benefits: flip circles.
+     Desktop: hover or keyboard focus flips the circle (pure CSS); JS only keeps the enlarged back inside the viewport.
+     Touch / phones: tap toggles .is-flipped (on phones the circle turns into a readable card). */
+  var flips=[].slice.call(d.querySelectorAll('.flip'));
+  var mobile=window.matchMedia('(max-width:760px)');
+  var lastType='mouse';
+  function place(f){
+    var inner=f.querySelector('.flip-inner'), dx=0;
+    if(!mobile.matches){
+      var r=f.getBoundingClientRect(), cx=r.left+r.width/2, half=inner.offsetWidth/2, vw=d.documentElement.clientWidth;
+      if(cx-half<8){dx=8-(cx-half);}else if(cx+half>vw-8){dx=(vw-8)-(cx+half);}
+    }
+    f.style.setProperty('--dx',Math.round(dx)+'px');
+  }
+  function closeAll(except){flips.forEach(function(f){if(f!==except){f.classList.remove('is-flipped');}});}
+  function toggleFlip(f){
+    var on=!f.classList.contains('is-flipped');
+    closeAll(f);
+    if(on){place(f);}
+    f.classList.toggle('is-flipped',on);
+    if(on&&mobile.matches&&f.scrollIntoView){f.scrollIntoView({block:'nearest',behavior:'smooth'});}
+  }
+  flips.forEach(function(f){
+    var inner=f.querySelector('.flip-inner');
+    inner.addEventListener('pointerenter',function(){place(f);});
+    inner.addEventListener('focus',function(){place(f);});
+    inner.addEventListener('pointerdown',function(e){lastType=e.pointerType||'mouse';});
+    inner.addEventListener('click',function(e){
+      if(lastType==='mouse'&&!mobile.matches){return;}
+      e.stopPropagation();
+      toggleFlip(f);
+    });
+    inner.addEventListener('keydown',function(e){
+      if((e.key==='Enter'||e.key===' ')&&mobile.matches){e.preventDefault();toggleFlip(f);}
+      if(e.key==='Escape'){f.classList.remove('is-flipped');}
+    });
+  });
+  d.addEventListener('click',function(e){if(!e.target.closest('.flip')){closeAll(null);}});
+  var onChange=function(){closeAll(null);};
+  if(mobile.addEventListener){mobile.addEventListener('change',onChange);}else if(mobile.addListener){mobile.addListener(onChange);}
+})();
+</script>
+<script>
+/* PSM · How Information Creates Value: scroll reveal + five flip circles.
+   Desktop: hover or keyboard focus flips the circle (pure CSS); JS only keeps the enlarged back inside the viewport.
+   Touch / phones: tap toggles .is-flipped (on phones the circle turns into a readable card). */
+(function(){
+  var d=document;
+
+  /* Scroll reveal */
+  var rev=[].slice.call(d.querySelectorAll('.iv-reveal'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rev.forEach(function(el){io.observe(el);});
+  }else{
+    rev.forEach(function(el){el.classList.add('in');});
+  }
+
+  /* Flip circles */
+  var flips=[].slice.call(d.querySelectorAll('.iv-flip'));
+  if(!flips.length){return;}
+  var mobile=window.matchMedia('(max-width:760px)');
+  var lastType='mouse';
+  function place(f){
+    var inner=f.querySelector('.iv-flip-inner'), dx=0;
+    if(!mobile.matches){
+      var r=f.getBoundingClientRect(), cx=r.left+r.width/2, half=inner.offsetWidth/2, vw=d.documentElement.clientWidth;
+      if(cx-half<8){dx=8-(cx-half);}else if(cx+half>vw-8){dx=(vw-8)-(cx+half);}
+    }
+    f.style.setProperty('--dx',Math.round(dx)+'px');
+  }
+  function closeAll(except){flips.forEach(function(f){if(f!==except){f.classList.remove('is-flipped');}});}
+  function toggleFlip(f){
+    var on=!f.classList.contains('is-flipped');
+    closeAll(f);
+    if(on){place(f);}
+    f.classList.toggle('is-flipped',on);
+    if(on&&mobile.matches&&f.scrollIntoView){f.scrollIntoView({block:'nearest',behavior:'smooth'});}
+  }
+  flips.forEach(function(f){
+    var inner=f.querySelector('.iv-flip-inner');
+    inner.addEventListener('pointerenter',function(){place(f);});
+    inner.addEventListener('focus',function(){place(f);});
+    inner.addEventListener('pointerdown',function(e){lastType=e.pointerType||'mouse';});
+    inner.addEventListener('click',function(e){
+      if(lastType==='mouse'&&!mobile.matches){return;}
+      e.stopPropagation();
+      toggleFlip(f);
+    });
+    inner.addEventListener('keydown',function(e){
+      if((e.key==='Enter'||e.key===' ')&&mobile.matches){e.preventDefault();toggleFlip(f);}
+      if(e.key==='Escape'){f.classList.remove('is-flipped');}
+    });
+  });
+  d.addEventListener('click',function(e){if(!e.target.closest('.iv-flip')){closeAll(null);}});
+  var onChange=function(){closeAll(null);};
+  if(mobile.addEventListener){mobile.addEventListener('change',onChange);}else if(mobile.addListener){mobile.addListener(onChange);}
+})();
+</script>
+</body>
+</html>
